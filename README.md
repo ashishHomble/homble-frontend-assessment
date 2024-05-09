@@ -16,7 +16,7 @@ We are seeking front-end developers experienced in React. Ideal candidates shoul
 
 ## Expectations
 
-- Use React and Bootstrap(if required) for the frontend development.
+- Use React and Bootstrap(if required) for the development.
 - Focus on usability rather than aesthetics.
 - Explain your work and be prepared to make on-the-fly adjustments during reviews.
 
@@ -40,19 +40,19 @@ This repo uses Create React App and includes essential setups:
 2. Sort the products based on their selling price.
 3. Display the products in a responsive grid:
 
-- 3 columns on large screens
-- 2 columns on medium screens
-- 1 column on mobile devices
+   - 3 columns on large screens
+   - 2 columns on medium screens
+   - 1 column on mobile devices
 
 4. Use skeleton components while products are loading
 5. On Click of the product tile it should redirect to the specific product page.
-6. Create a “Add Product Button”:
+6. Create an “Add Product Button”:
 7. Opens a modal with 3 input fields and “Add” button:
 
-- Product Name
-- Product Description
-- Product Allergen Info
-- On Click “Add” - Should submit a post request to endpoint: `/products`
+   - Product Name
+   - Product Description
+   - Product Allergen Info
+   - On Click “Add” - Should submit a post request to endpoint: `/products`
 
 ### Task 2: Individual Product Details
 
@@ -62,7 +62,7 @@ This repo uses Create React App and includes essential setups:
 
 1. Fetch individual product data from the server using the endpoint: `/products/:id`.
 2. Display product information including product name, price, description, allergens, and usage instructions.
-3. Implement expandable/collapsible sections for the description, allergen information, and usage.
+3. Implement expandable/collapsible sections for the description, allergen information, and usage (all sections should be able to expand/collapse independently).
 4. Show a “Loading…” text when details are loading.
 
 ### Task 3: Code Improvement
@@ -71,7 +71,7 @@ This repo uses Create React App and includes essential setups:
 
 **Details**:
 
-1. Develop a custom hook for fetching data from the server and sending patch requests.
+1. Develop a custom hook for fetching data from the server and sending requests.
 2. Ensure you handle errors—simply show a text message: “Something went wrong.”
 3. Memoize the computed values.
 
@@ -83,11 +83,13 @@ This is optional but would help us understand your current proficiency level, so
 
 **Details:**
 
-- Get list of products with ids, quantities and name from endpoint `/dashboard`
+- Get list of products with ids, selling price and name from endpoint `/dashboard`
 - Create a table like interface with headings and buttons to sort the data.
-- Implement sorting functionality that allows sorting by product ID, quantity, or name.
-- Enable functionality to "inward" products without reloading the page, allowing continuous operations.
-- Add a search bar that supports "contains" search for product name or ID.
+- Implement sorting functionality that allows sorting by product ID, selling price, or name.
+- Enable a Check button
+  - Provide a "Check" button for each element (row).
+  - Clicking this button should remove the element from the page without reloading, allowing for continuous operations.
+- Add a search bar on top of table that supports "contains" search for product name or ID.
 
 ## Submission
 

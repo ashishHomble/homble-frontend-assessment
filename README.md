@@ -16,7 +16,7 @@ We are seeking front-end developers experienced in React. Ideal candidates shoul
 
 ## Expectations
 
-- Use React and Bootstrap for the frontend development.
+- Use React and Bootstrap(if required) for the frontend development.
 - Focus on usability rather than aesthetics.
 - Explain your work and be prepared to make on-the-fly adjustments during reviews.
 
@@ -24,8 +24,9 @@ We are seeking front-end developers experienced in React. Ideal candidates shoul
 
 This repo uses Create React App and includes essential setups:
 
-- **App Router**: Manages all the routes.
+- **AppRouter.jsx**: Manages all the routes.
 - **Screens and Components**: Directories for adding screens and components.
+- **axios.js**: Contains API endpoints info and has basic axios setup.
 
 ## Assessment Tasks
 
@@ -35,10 +36,23 @@ This repo uses Create React App and includes essential setups:
 
 **Details**:
 
-- Fetch data from `/product`.
-- Display in a responsive grid.
-- Implement a skeleton loader.
-- Include an "Add Product" modal with fields for product name, description, and allergen info.
+1. Fetch product data from the server using the endpoint: `/product`
+2. Sort the products based on their selling price.
+3. Display the products in a responsive grid:
+
+- 3 columns on large screens
+- 2 columns on medium screens
+- 1 column on mobile devices
+
+4. Handle products with multiple images appropriately, ensuring that each image can redirect according to its redirect URL.
+5. Use skeleton components while products are loading
+6. Create a “Add Product Button”:
+7. Opens a modal with 3 input fields and “Add” button:
+
+- Product Name
+- Product Description
+- Product Allergen Info
+- On Click “Add” - Should submit a post request to endpoint: `/product`
 
 ### Task 2: Individual Product Details
 
@@ -46,9 +60,10 @@ This repo uses Create React App and includes essential setups:
 
 **Details**:
 
-- Fetch data using `/products/:id`.
-- Include expandable sections for detailed information.
-- Display a loading indicator when data is fetching.
+1. Fetch individual product data from the server using the endpoint: `/products/:id`.
+2. Display product information including product name, price, description, allergens, and usage instructions.
+3. Implement expandable/collapsible sections for the description, allergen information, and usage.
+4. Show a “Loading…” text when details are loading.
 
 ### Task 3: Code Improvement
 
@@ -56,19 +71,23 @@ This repo uses Create React App and includes essential setups:
 
 **Details**:
 
-- Develop a custom hook for data fetching and sending patch requests.
-- Handle errors effectively.
-- Memoize computed values.
+1. Develop a custom hook for fetching data from the server and sending patch requests.
+2. Ensure you handle errors—simply show a text message: “Something went wrong.”
+3. Memoize the computed values.
 
 ### Bar Raiser: Dashboard
 
-**Objective**: Create a dashboard for managing products.
+This is optional but would help us understand your current proficiency level, so do give it a try anyways.
 
-**Details**:
+**Objective:** Creating a dashboard (a table interface) for managing products.
 
-- Fetch and display products from `/products-inward`.
-- Implement sorting and a live "inward" product functionality.
-- Add a "contains" search functionality.
+**Details:**
+
+- Get list of products with ids, quantities and name from endpoint `/products-inward`
+- Create a table like interface with headings and buttons to sort the data.
+- Implement sorting functionality that allows sorting by product ID, quantity, or name.
+- Enable functionality to "inward" products without reloading the page, allowing continuous operations.
+- Add a search bar that supports "contains" search for product name or ID.
 
 ## Submission
 

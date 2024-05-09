@@ -44,8 +44,8 @@ This repo uses Create React App and includes essential setups:
 - 2 columns on medium screens
 - 1 column on mobile devices
 
-4. Handle products with multiple images appropriately, ensuring that each image can redirect according to its redirect URL.
-5. Use skeleton components while products are loading
+4. Use skeleton components while products are loading
+5. On Click of the product tile it should redirect to the specific product page.
 6. Create a “Add Product Button”:
 7. Opens a modal with 3 input fields and “Add” button:
 

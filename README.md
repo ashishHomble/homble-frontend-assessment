@@ -36,7 +36,7 @@ This repo uses Create React App and includes essential setups:
 
 **Details**:
 
-1. Fetch product data from the server using the endpoint: `/api/products`
+1. Fetch product data from the server using the endpoint: `/products`
 2. Sort the products based on their selling price.
 3. Display the products in a responsive grid:
 
@@ -52,7 +52,7 @@ This repo uses Create React App and includes essential setups:
 - Product Name
 - Product Description
 - Product Allergen Info
-- On Click “Add” - Should submit a post request to endpoint: `/api/products`
+- On Click “Add” - Should submit a post request to endpoint: `/products`
 
 ### Task 2: Individual Product Details
 
@@ -60,7 +60,7 @@ This repo uses Create React App and includes essential setups:
 
 **Details**:
 
-1. Fetch individual product data from the server using the endpoint: `/api/products/:id`.
+1. Fetch individual product data from the server using the endpoint: `/products/:id`.
 2. Display product information including product name, price, description, allergens, and usage instructions.
 3. Implement expandable/collapsible sections for the description, allergen information, and usage.
 4. Show a “Loading…” text when details are loading.
@@ -83,7 +83,7 @@ This is optional but would help us understand your current proficiency level, so
 
 **Details:**
 
-- Get list of products with ids, quantities and name from endpoint `/api/dashboard`
+- Get list of products with ids, quantities and name from endpoint `/dashboard`
 - Create a table like interface with headings and buttons to sort the data.
 - Implement sorting functionality that allows sorting by product ID, quantity, or name.
 - Enable functionality to "inward" products without reloading the page, allowing continuous operations.

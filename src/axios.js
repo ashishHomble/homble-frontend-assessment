@@ -1,11 +1,11 @@
 import axios from "axios";
 
-//GET - get all products - /api/products
-//GET - get product by ud - /api/products/:id
-//POST - create product - /api/products - Content Type - "application/json"
-//GET - get dashboard data - /api/dashboard
+//GET - get all products - /products
+//GET - get product by ud - /products/:id
+//POST - create product - /products - Content Type - "application/json"
+//GET - get dashboard data - /dashboard
 
-const envBaseUrl = "";
+const envBaseUrl = "https://frontend-assessment-server.onrender.com/api";
 
 const instance = axios.create({
   baseURL: envBaseUrl,

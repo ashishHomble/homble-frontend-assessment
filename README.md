@@ -8,11 +8,12 @@ We are seeking front-end developers experienced in React. Ideal candidates shoul
 
 ## Instructions
 
-1. Clone this repository into your own new private repository.
+1. Clone this repository into your own new private repository (make sure you are using node version > 18).
 2. Run `npm install` to install dependencies.
 3. Begin the assessment by reviewing the Overview section for a general understanding of the existing code base.
-4. Commit your code progressively to your repository.
-5. Once complete, add `ashishHomble` as a collaborator to your repository and notify us via email at tech@homble.in.
+4. The server might have cold start issue and stops after a period of inactivity. So the first request might take a min to process.
+5. Commit your code progressively to your repository.
+6. Once complete, add `ashishHomble` as a collaborator to your repository and notify us via email at tech@homble.in.
 
 ## Expectations
 

@@ -79,6 +79,7 @@ This repo uses Create React App and includes essential setups:
 1. Develop a custom hook for fetching data from the server and sending requests.
 2. Ensure you handle errors—simply show a text message: “Something went wrong.”
 3. Memoize the computed values.
+#### did in 1hr custom hooks got me.. i have used the naive approch of doing the process, as iam in begining stages hope that great...
 
 ### Bar Raiser: Dashboard
 

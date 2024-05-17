@@ -26,6 +26,9 @@ const ProductList = () => {
   return (
     <div>
       <h1>Product List</h1>
+      <Link to="/add-product">
+        <button>Add Product</button>
+      </Link>
       {loading ? (
         <div className="product-list">
           {[...Array(8)].map((_, index) => (

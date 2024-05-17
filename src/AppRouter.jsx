@@ -4,6 +4,7 @@ import Home from "./screens/Home";
 import ProductList from "./components/ProductList";
 import ProductDetails from "./components/ProductDetails";
 import ProductDashboard from "./components/ProductDashboard";
+import AddProduct from "./components/AddProduct";
 
 
 const AppRouter = () => {
@@ -14,6 +15,7 @@ const AppRouter = () => {
         <Route path="/products" element={<ProductList />} />
         <Route path="/details/:id" component={ProductDetails} /> {/* Route for ProductDetails with dynamic ID */}
         <Route path="/dashboard" element={<ProductDashboard />} />
+        <Route path="/add-product" element={<AddProduct />} />
       </Routes>
     </BrowserRouter>
   );

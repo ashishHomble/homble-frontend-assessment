@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
-import { getRequest } from "../axios";
+import { getRequest } from "../../axios";
 
 const useProductDetails = (id) => {
   const [product, setProduct] = useState(null);

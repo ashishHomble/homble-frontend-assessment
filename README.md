@@ -96,9 +96,13 @@ This is optional but would help us understand your current proficiency level, so
   - Provide a "Check" button for each element (row).
   - Clicking this button should remove the element from the page without reloading, allowing for continuous operations.
 - Add a search bar on top of table that supports "contains" search for product name or ID.
-
+#### completed at 810 including optional task
+#### 3hr 20 min time taken in total
+#### for css iwill spen 30 min
 ## Submission
 
 Ensure you've pushed all changes and added the repository owner as a collaborator for evaluation.
 
 Good luck!
+
+#### i am going to submit at 930 hopefully after aplying css thats for now...

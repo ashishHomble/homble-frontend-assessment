@@ -4,7 +4,7 @@ import useProductDetails from "./useProductDetails";
 
 const ProductDetails = () => {
   const { id } = useParams();
-  const { product, isLoading, error } = useProductDetails(id);
+  const { product, loading, error } = useProductDetails(id);
 
   const [isDescriptionOpen, setIsDescriptionOpen] = useState(false);
   const [isAllergenInfoOpen, setIsAllergenInfoOpen] = useState(false);
@@ -32,10 +32,10 @@ const ProductDetails = () => {
       <Link className="link" to="/">
         home
       </Link>
-      {isLoading ? (
+      {loading ? (
         <p>Loading...</p>
       ) : error ? (
-        <p>Error: {error.message}</p>
+        <p>Something went wrong.</p>
       ) : product ? (
         <div>
           <h2>Product Details</h2>

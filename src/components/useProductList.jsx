@@ -14,18 +14,14 @@ const useProductList = () => {
           (a, b) => a.cost_price - b.cost_price
         );
         setProducts(sortedProducts);
-        setLoading(false);
       } catch (error) {
         setError(error);
+      } finally {
         setLoading(false);
       }
     };
 
     fetchProducts();
-
-    return () => {
-      // Cleanup function
-    };
   }, []);
 
   return { products, loading, error };

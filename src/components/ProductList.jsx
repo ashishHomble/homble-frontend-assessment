@@ -23,7 +23,7 @@ const ProductList = () => {
           ))}
         </div>
       ) : error ? (
-        <p>Error: {error.message}</p>
+        <p>Something went wrong.</p>
       ) : (
         <div className="product-list">
           {products.map((product) => (

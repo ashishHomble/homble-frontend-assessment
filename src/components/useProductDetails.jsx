@@ -3,7 +3,7 @@ import { getRequest } from "../axios";
 
 const useProductDetails = (id) => {
   const [product, setProduct] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -11,10 +11,10 @@ const useProductDetails = (id) => {
       try {
         const response = await getRequest(`/products/${id}`);
         setProduct(response.data);
-        setIsLoading(false);
       } catch (error) {
         setError(error);
-        setIsLoading(false);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -25,7 +25,7 @@ const useProductDetails = (id) => {
     };
   }, [id]);
 
-  return { product, isLoading, error };
+  return { product, loading, error };
 };
 
 export default useProductDetails;

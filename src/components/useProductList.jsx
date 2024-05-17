@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { getRequest } from "../axios";
 
 const useProductList = () => {
@@ -22,9 +22,20 @@ const useProductList = () => {
     };
 
     fetchProducts();
+
+    return () => {
+      // Cleanup function
+    };
   }, []);
 
-  return { products, loading, error };
+  // Memoize the computed values
+  const memoizedValues = useMemo(() => ({
+    products,
+    loading,
+    error
+  }), [products, loading, error]);
+
+  return memoizedValues;
 };
 
 export default useProductList;

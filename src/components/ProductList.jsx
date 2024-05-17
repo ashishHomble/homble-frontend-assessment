@@ -1,29 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { getRequest } from "../axios";
+import React from "react";
+import { Link } from "react-router-dom";
+import useProductList from "./useProductList";
 import Skeleton from "./Skeleton";
-import { Link } from "react-router-dom"; // Import Link from React Router
 import "./ProductList.css";
 
 const ProductList = () => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await getRequest("/products");
-        const sortedProducts = response.data.sort(
-          (a, b) => a.cost_price - b.cost_price
-        );
-        setProducts(sortedProducts);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      }
-    };
-
-    fetchProducts();
-  }, []);
+  const { products, loading, error } = useProductList();
 
   return (
     <div>
@@ -40,12 +22,12 @@ const ProductList = () => {
             <Skeleton key={index} />
           ))}
         </div>
+      ) : error ? (
+        <p>Error: {error.message}</p>
       ) : (
         <div className="product-list">
           {products.map((product) => (
             <Link to={`/details/${product.id}`} key={product.id}>
-              {" "}
-              {/* Wrap each product tile with Link */}
               <div className="product-card">
                 <img src={product.productImage} alt={product.name} />
                 <h2>{product.name}</h2>

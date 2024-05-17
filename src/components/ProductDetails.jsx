@@ -1,27 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { getRequest } from "../axios"; // Assuming you have a getRequest function for making GET requests
+import useProductDetails from "./useProductDetails";
 
 const ProductDetails = () => {
-  const { id } = useParams(); // Access the ID parameter from the URL
-  const [product, setProduct] = useState(null);
+  const { id } = useParams();
+  const { product, isLoading, error } = useProductDetails(id);
+
   const [isDescriptionOpen, setIsDescriptionOpen] = useState(false);
   const [isAllergenInfoOpen, setIsAllergenInfoOpen] = useState(false);
   const [isUsageOpen, setIsUsageOpen] = useState(false);
   const [isCostOpen, setIsCostOpen] = useState(false);
-
-  useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        const response = await getRequest(`/products/${id}`);
-        setProduct(response.data);
-      } catch (error) {
-        console.error("Error fetching product:", error);
-      }
-    };
-
-    fetchProduct();
-  }, [id]); // Fetch product data when the ID parameter changes
 
   const toggleDescription = () => {
     setIsDescriptionOpen(!isDescriptionOpen);
@@ -34,6 +22,7 @@ const ProductDetails = () => {
   const toggleUsage = () => {
     setIsUsageOpen(!isUsageOpen);
   };
+
   const toggleCost = () => {
     setIsCostOpen(!isCostOpen);
   };
@@ -43,7 +32,11 @@ const ProductDetails = () => {
       <Link className="link" to="/">
         home
       </Link>
-      {product ? (
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : error ? (
+        <p>Error: {error.message}</p>
+      ) : product ? (
         <div>
           <h2>Product Details</h2>
           <div>
@@ -78,7 +71,7 @@ const ProductDetails = () => {
           </div>
         </div>
       ) : (
-        <p>Loading...</p>
+        <p>No product found</p>
       )}
     </div>
   );

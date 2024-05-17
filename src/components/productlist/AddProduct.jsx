@@ -47,37 +47,48 @@ const AddProduct = () => {
   };
 
   return (
-    <div>
+    <div className="container mt-5"> {/* Utilizing Bootstrap container and margin top class */}
       <Link className="link" to="/">
         home
       </Link>
-      <button onClick={() => setIsModelOpen(true)}>Add Product</button>
+      <div className="mb-3"> {/* Adding margin bottom between the link and the button */}
+        <button className="btn btn-primary" onClick={() => setIsModelOpen(true)}>Add Product</button> {/* Utilizing Bootstrap button styling */}
+      </div>
       {isModelOpen && (
         <Model onClose={() => setIsModelOpen(false)}>
           <h2>Add Product</h2>
           {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-          <input
-            type="text"
-            value={productName}
-            onChange={handleProductNameChange}
-            placeholder="Product Name"
-            required
-          />
-          <input
-            type="text"
-            value={productDescription}
-            onChange={handleProductDescriptionChange}
-            placeholder="Product Description"
-            required
-          />
-          <input
-            type="text"
-            value={productAllergenInfo}
-            onChange={handleProductAllergenInfoChange}
-            placeholder="Product Allergen Info"
-            required
-          />
-          <button onClick={handleSubmit}>Add</button>
+          <div className="mb-3"> {/* Adding margin bottom between the header and the input fields */}
+            <input
+              type="text"
+              value={productName}
+              onChange={handleProductNameChange}
+              className="form-control" // Utilizing Bootstrap form-control class
+              placeholder="Product Name"
+              required
+            />
+          </div>
+          <div className="mb-3"> {/* Adding margin bottom between the input fields */}
+            <input
+              type="text"
+              value={productDescription}
+              onChange={handleProductDescriptionChange}
+              className="form-control" // Utilizing Bootstrap form-control class
+              placeholder="Product Description"
+              required
+            />
+          </div>
+          <div className="mb-3"> {/* Adding margin bottom between the input fields */}
+            <input
+              type="text"
+              value={productAllergenInfo}
+              onChange={handleProductAllergenInfoChange}
+              className="form-control" // Utilizing Bootstrap form-control class
+              placeholder="Product Allergen Info"
+              required
+            />
+          </div>
+          <button className="btn btn-success" onClick={handleSubmit}>Add</button> {/* Utilizing Bootstrap button styling */}
         </Model>
       )}
     </div>

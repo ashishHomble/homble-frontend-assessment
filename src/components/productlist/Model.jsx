@@ -1,5 +1,4 @@
 import React from 'react';
-import './Model.css';
 
 const Model = ({ children, onClose }) => {
   return (

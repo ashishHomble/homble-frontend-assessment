@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { getRequest } from "../axios";
+import { Link } from "react-router-dom";
 
-const useSortableData = (
-  items,
-  config = { key: "id", direction: "asc" }
-) => {
+const useSortableData = (items, config = { key: "id", direction: "asc" }) => {
   const [sortConfig, setSortConfig] = useState(config);
 
   const sortedItems = useMemo(() => {
@@ -67,45 +65,69 @@ const ProductDashboard = () => {
     }
   }, [searchQuery, products]);
 
-  const { items: sortedProducts, requestSort, sortConfig } = useSortableData(
-    filteredProducts
-  );
+  const {
+    items: sortedProducts,
+    requestSort,
+    sortConfig,
+  } = useSortableData(filteredProducts);
 
   const removeProduct = (productId) => {
     setProducts(products.filter((product) => product.id !== productId));
   };
 
   return (
-    <div>
-      <h1>Product Dashboard</h1>
+    <div className="container mt-5">
+      <Link className="link" to="/">
+        home
+      </Link>
+      <h1 className="mb-4">Product Dashboard</h1>
       <input
         type="text"
+        className="form-control mb-4"
         placeholder="Search by ID or Name"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
       {loading ? (
-        <p>Loading...</p>
+        <div className="text-center">
+          <div className="spinner-border" role="status">
+            <span className="sr-only">Loading...</span>
+          </div>
+        </div>
       ) : (
-        <table>
-          <thead>
+        <table className="table table-bordered">
+          <thead
+            className="thead-light"
+            style={{
+              background: "linear-gradient(to right, #b8e994, #78e08f)",
+            }}
+          >
             <tr>
               <th>
-                <button onClick={() => requestSort("id")}>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => requestSort("id")}
+                >
                   {sortConfig.key === "id" && sortConfig.direction === "asc"
                     ? "Original Order"
                     : "Sort by ID"}
                 </button>
               </th>
               <th>
-                <button onClick={() => requestSort("name")}>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => requestSort("name")}
+                >
                   {sortConfig.key === "name" && sortConfig.direction === "asc"
                     ? "Regular Order"
                     : "Sort by Name"}
                 </button>
               </th>
               <th>
-                <button onClick={() => requestSort("selling_price")}>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => requestSort("selling_price")}
+                >
                   {sortConfig.key === "selling_price" &&
                   sortConfig.direction === "asc"
                     ? "Regular Order"
@@ -122,7 +144,10 @@ const ProductDashboard = () => {
                 <td>{product.name}</td>
                 <td>{product.selling_price}</td>
                 <td>
-                  <button onClick={() => removeProduct(product.id)}>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => removeProduct(product.id)}
+                  >
                     Check
                   </button>
                 </td>

@@ -37,50 +37,52 @@ const ProductDetails = () => {
   };
 
   return (
-    <div>
+    <div className="container mt-5">
       <Link className="link" to="/">
-        home
+        HOME
       </Link>
       {memoizedLoading ? (
-        <p>Loading...</p>
+        <p>LOADING...</p>
       ) : memoizedError ? (
-        <p>Something went wrong.</p>
+        <p>SOMETHING WENT WRONG.</p>
       ) : memoizedProduct ? (
-        <div>
-          <h2>Product Details</h2>
-          <div>
-            <h3 onClick={toggleDescription} style={{ cursor: "pointer" }}>
-              Description
-            </h3>
-            {isDescriptionOpen && (
-              <div>
-                <img src={memoizedProduct.productImage} alt={memoizedProduct.name} />
-                <h3>{memoizedProduct.name}</h3>
-                <p>{memoizedProduct.description}</p>
-              </div>
-            )}
-          </div>
-          <div>
-            <h3 onClick={toggleAllergenInfo} style={{ cursor: "pointer" }}>
-              Allergen Info
-            </h3>
-            {isAllergenInfoOpen && <p>{memoizedProduct.allergen_info}</p>}
-          </div>
-          <div>
-            <h3 onClick={toggleUsage} style={{ cursor: "pointer" }}>
-              Usage
-            </h3>
-            {isUsageOpen && <p>{memoizedProduct.cooking_instruction}</p>}
-          </div>
-          <div>
-            <h3 onClick={toggleCost} style={{ cursor: "pointer" }}>
-              Cost
-            </h3>
-            {isCostOpen && <p>{memoizedProduct.selling_price}</p>}
-          </div>
+        <div className="table-responsive">
+          <table className="table table-bordered">
+            <tbody>
+              <tr>
+                <th colSpan="3" className="text-center">PRODUCT DETAILS</th>
+              </tr>
+              <tr>
+                <td colSpan="3">
+                  <h3 onClick={toggleDescription} className="text-primary" style={{ cursor: "pointer" }}>DESCRIPTION</h3>
+                  {isDescriptionOpen && (
+                    <div>
+                      <img src={memoizedProduct.productImage} alt={memoizedProduct.name} />
+                      <h3>{memoizedProduct.name}</h3>
+                      <p>{memoizedProduct.description}</p>
+                    </div>
+                  )}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <h3 onClick={toggleAllergenInfo} className="text-primary" style={{ cursor: "pointer" }}>ALLERGEN INFO</h3>
+                  {isAllergenInfoOpen && <p>{memoizedProduct.allergen_info}</p>}
+                </td>
+                <td>
+                  <h3 onClick={toggleUsage} className="text-primary" style={{ cursor: "pointer" }}>USAGE</h3>
+                  {isUsageOpen && <p>{memoizedProduct.cooking_instruction}</p>}
+                </td>
+                <td>
+                  <h3 onClick={toggleCost} className="text-primary" style={{ cursor: "pointer" }}>COST</h3>
+                  {isCostOpen && <p>{memoizedProduct.selling_price}</p>}
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       ) : (
-        <p>No product found</p>
+        <p>NO PRODUCT FOUND</p>
       )}
     </div>
   );

@@ -26,7 +26,7 @@ const useSortableData = (
   const requestSort = (key) => {
     let direction = "asc";
     if (sortConfig.key === key && sortConfig.direction === "asc") {
-      direction = "original";
+      direction = "desc";
     }
     setSortConfig({ key, direction });
   };
@@ -37,6 +37,8 @@ const useSortableData = (
 const ProductDashboard = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -52,8 +54,21 @@ const ProductDashboard = () => {
     fetchProducts();
   }, []);
 
+  useEffect(() => {
+    if (searchQuery.trim() === "") {
+      setFilteredProducts(products);
+    } else {
+      const filtered = products.filter(
+        (product) =>
+          product.id.toString().includes(searchQuery) ||
+          product.name.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setFilteredProducts(filtered);
+    }
+  }, [searchQuery, products]);
+
   const { items: sortedProducts, requestSort, sortConfig } = useSortableData(
-    products
+    filteredProducts
   );
 
   const removeProduct = (productId) => {
@@ -63,6 +78,12 @@ const ProductDashboard = () => {
   return (
     <div>
       <h1>Product Dashboard</h1>
+      <input
+        type="text"
+        placeholder="Search by ID or Name"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+      />
       {loading ? (
         <p>Loading...</p>
       ) : (

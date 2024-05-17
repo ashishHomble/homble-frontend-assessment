@@ -4,16 +4,20 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <div style={{ padding: 20 }}>
-      <div className="links" style={{ display:"flex", justifyContent: "space-between" }}>
+      <div
+        className="links"
+        style={{ display: "flex", justifyContent: "space-between" }}
+      >
         <Link className="link" to="/">
           home
         </Link>
         <Link className="link" to="/products">
           products
         </Link>
-        <Link className="link" to="/details">
+        <Link className="link" to="/details/1">
           details
-        </Link>{" "}
+        </Link>
+
         {/* here we should do smth to fetch id and search along with for individuality*/}
         <Link className="link" to="/dashboard">
           dashboard

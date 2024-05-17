@@ -12,7 +12,7 @@ const AppRouter = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<ProductList />} />
-        <Route path="/details" element={<ProductDetails />} />
+        <Route path="/details/:id" component={ProductDetails} /> {/* Route for ProductDetails with dynamic ID */}
         <Route path="/dashboard" element={<ProductDashboard />} />
       </Routes>
     </BrowserRouter>

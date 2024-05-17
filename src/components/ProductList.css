@@ -1,5 +1,8 @@
 /* Add this CSS to your styles */
-
+*{
+  text-decoration: none;
+  color:black;
+}
 .product-list {
   display: grid;
   gap: 16px; /* Adjust the gap between grid items */
@@ -25,6 +28,7 @@
 }
 
 .product-card {
+  
   width: 300px;
   border: 1px solid #ddd;
   padding: 16px;

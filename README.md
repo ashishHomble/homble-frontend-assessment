@@ -64,6 +64,7 @@ This repo uses Create React App and includes essential setups:
 
 1. Fetch individual product data from the server using the endpoint: `/products/:id`.
 2. Display product information including product name, price, description, allergens, and usage instructions.
+#### usage instructions ich nhi h, cooking instructions h..
 3. Implement expandable/collapsible sections for the description, allergen information, and usage (all sections should be able to expand/collapse independently).
 4. Show a “Loading…” text when details are loading.
 

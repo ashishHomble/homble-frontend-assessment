@@ -54,6 +54,7 @@ This repo uses Create React App and includes essential setups:
    - Product Description
    - Product Allergen Info
    - On Click “Add” - Should submit a post request to endpoint: `/products`
+### done in 1n half hour...
 
 ### Task 2: Individual Product Details
 

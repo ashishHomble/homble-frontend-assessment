@@ -1,63 +1,88 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { getRequest } from '../axios'; // Assuming you have a getRequest function for making GET requests
+import React, { useState } from 'react';
+import Model from './Model'; // Import your Model component
+import { postRequest } from '../axios'; // Import your post request function
+import { Link } from 'react-router-dom';
 
-const ProductDetails = () => {
-  const { id } = useParams(); // Access the ID parameter from the URL
-  const [product, setProduct] = useState(null);
-  const [isDescriptionOpen, setIsDescriptionOpen] = useState(false);
-  const [isAllergenInfoOpen, setIsAllergenInfoOpen] = useState(false);
-  const [isUsageOpen, setIsUsageOpen] = useState(false);
+const AddProduct = () => {
+  const [productName, setProductName] = useState('');
+  const [productDescription, setProductDescription] = useState('');
+  const [productAllergenInfo, setProductAllergenInfo] = useState('');
+  const [isModelOpen, setIsModelOpen] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
-  useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        const response = await getRequest(`/products/${id}`);
-        setProduct(response.data);
-      } catch (error) {
-        console.error('Error fetching product:', error);
-      }
-    };
-
-    fetchProduct();
-  }, [id]); // Fetch product data when the ID parameter changes
-
-  const toggleDescription = () => {
-    setIsDescriptionOpen(!isDescriptionOpen);
+  const handleProductNameChange = (event) => {
+    setProductName(event.target.value);
   };
 
-  const toggleAllergenInfo = () => {
-    setIsAllergenInfoOpen(!isAllergenInfoOpen);
+  const handleProductDescriptionChange = (event) => {
+    setProductDescription(event.target.value);
   };
 
-  const toggleUsage = () => {
-    setIsUsageOpen(!isUsageOpen);
+  const handleProductAllergenInfoChange = (event) => {
+    setProductAllergenInfo(event.target.value);
+  };
+
+  const handleSubmit = async () => {
+    if (!productName || !productDescription || !productAllergenInfo) {
+      setErrorMessage('All fields are required.');
+      return;
+    }
+
+    try {
+      const response = await postRequest('/products', {
+        name: productName,
+        description: productDescription,
+        allergen_info: productAllergenInfo
+      });
+      // Handle success response, maybe close the Model or show a success message
+      console.log('Product added successfully:', response.data); // i guess api givin response.data as ---Product created successfull
+      setIsModelOpen(false); // Close the modal after successful submission
+
+    } catch (error) {
+      console.error('Error adding product:', error);
+      // Handle error, maybe show an error message to the user
+    }
+    setProductName('');
+    setProductDescription('');
+    setProductAllergenInfo('');
   };
 
   return (
     <div>
-      {product ? (
-        <div>
-          <h2>Product Details</h2>
-          <div>
-            <h3 onClick={toggleDescription} style={{ cursor: 'pointer' }}>Description</h3>
-            {isDescriptionOpen && <p>{product.description}</p>}
-          </div>
-          <div>
-            <h3 onClick={toggleAllergenInfo} style={{ cursor: 'pointer' }}>Allergen Info</h3>
-            {isAllergenInfoOpen && <p>{product.allergen_info}</p>}
-          </div>
-          <div>
-            <h3 onClick={toggleUsage} style={{ cursor: 'pointer' }}>Usage</h3>
-            {isUsageOpen && <p>{product.usage_instructions}</p>}
-          </div>
-          {/* Add more sections here if needed */}
-        </div>
-      ) : (
-        <p>Loading...</p>
+      <Link className="link" to="/">
+          home
+        </Link>
+      <button onClick={() => setIsModelOpen(true)}>Add Product</button>
+      {isModelOpen && (
+        <Model onClose={() => setIsModelOpen(false)}>
+          <h2>Add Product</h2>
+          {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+          <input
+            type="text"
+            value={productName}
+            onChange={handleProductNameChange}
+            placeholder="Product Name"
+            required
+          />
+          <input
+            type="text"
+            value={productDescription}
+            onChange={handleProductDescriptionChange}
+            placeholder="Product Description"
+            required
+          />
+          <input
+            type="text"
+            value={productAllergenInfo}
+            onChange={handleProductAllergenInfoChange}
+            placeholder="Product Allergen Info"
+            required
+          />
+          <button onClick={handleSubmit}>Add</button>
+        </Model>
       )}
     </div>
   );
 };
 
-export default ProductDetails;
+export default AddProduct;

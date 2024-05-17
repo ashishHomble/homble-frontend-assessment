@@ -67,6 +67,8 @@ This repo uses Create React App and includes essential setups:
 #### usage instructions ich nhi h, cooking instructions h..
 3. Implement expandable/collapsible sections for the description, allergen information, and usage (all sections should be able to expand/collapse independently).
 4. Show a “Loading…” text when details are loading.
+#### was done in 30min
+
 
 ### Task 3: Code Improvement
 

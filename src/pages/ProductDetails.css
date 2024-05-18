@@ -1,0 +1,33 @@
+/* src/pages/ProductDetails.css */
+.product-details {
+    padding: 20px;
+  }
+  
+  .product-details h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .product-details p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .expandable-section {
+    margin-top: 20px;
+  }
+  
+  .expandable-section h3 {
+    cursor: pointer;
+    background: #f0f0f0;
+    padding: 10px;
+    margin: 0;
+  }
+  
+  .expandable-section p {
+    display: none;
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #f0f0f0;
+  }
+  

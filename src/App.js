@@ -1,5 +1,7 @@
-import "./App.css";
-import AppRouter from "./AppRouter";
+// src/App.js
+import React from 'react';
+import AppRouter from './AppRouter';
+import './App.css';
 
 function App() {
   return (

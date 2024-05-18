@@ -1,0 +1,16 @@
+.skeleton {
+    border: 1px solid #ddd;
+    padding: 16px;
+  }
+  
+  .skeleton-title {
+    height: 20px;
+    background: #eee;
+    margin-bottom: 8px;
+  }
+  
+  .skeleton-text {
+    height: 15px;
+    background: #eee;
+  }
+  

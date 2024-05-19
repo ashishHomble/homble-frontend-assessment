@@ -1,0 +1,55 @@
+/* Home.css */
+
+/* Container styling */
+.home-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 100px auto 0; /* Center the container vertically */
+  font-family: 'Arial', sans-serif;
+  text-align: center; /* Center align text */
+}
+
+/* Title styling */
+.home-title {
+  font-size: 3em; /* Increase title font size */
+  color: #543310;
+  margin-bottom: 50px; /* Add some space below the title */
+}
+
+/* List styling */
+.home-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap to the next line */
+  justify-content: center; /* Center align items horizontally */
+}
+
+/* List item styling */
+.home-list-item {
+  margin: 20px; /* Adjust margin for better spacing */
+  width: 200px;
+  height: 200px; /* Increase height for a more prominent appearance */
+  border: 2px solid #070707;
+  border-radius: 50%; /* Circular border */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #AF8F6F;
+  transition: transform 0.3s ease; /* Add smooth transition on hover */
+}
+
+/* Link styling */
+.home-link {
+  text-decoration: none; /* Use none for consistent styling */
+  font-size: 24px; /* Increase font size */
+  font-weight: bold; /* Use bold font weight */
+  color: #0d0d0d;
+  text-align: center;
+}
+
+.home-link:hover {
+  color: #0056b3;
+  transform: scale(1.1); /* Add slight scale effect on hover */
+}

@@ -1,0 +1,168 @@
+/* src/pages/ProductList.css */
+
+.product-list-container {
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./Yellow\ Colorful\ Restaurant\ Promotion\ Poster.png'); /* Replace with your image path */
+  background-size: cover;
+  background-position: center;
+  z-index: -1; /* Ensure the background image is behind the content */
+}
+
+.product-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr; /* Default to 1 column */
+}
+
+.product-tile {
+  background-color: transparent;
+  border: 1px solid #543310;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  transition: box-shadow 0.3s ease;
+}
+
+.product-tile h2 {
+  font-size: 1.5em;
+  font-style: italic;
+  margin: 0 0 10px;
+  color: #543310;
+}
+
+.product-tile p {
+  font-size: 1.2em;
+  color: #543310;
+}
+
+.product-tile img.product-photo {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.product-tile:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-tile a {
+  text-decoration: none; /* Remove underline from links within product tiles */
+}
+
+.add-product-button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 1em;
+  color: white;
+  background-color: #74512D;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: Arial;
+}
+
+.add-product-button:hover {
+  background-color: #AF8F6F;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background-color: #F8F4E1;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  font-family: sans-serif;
+}
+
+.modal-content::placeholder {
+  font-family: Arial;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+}
+
+.modal-content .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-content form input,
+.modal-content form textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 1.5em;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.modal-content form button {
+  padding: 10px;
+  font-size: 1em;
+  color: white;
+  background-color: #543310;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-content form button:hover {
+  background-color: #AF8F6F;
+}
+
+.response-message {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.2em;
+  color: green;
+}
+
+/* Responsive styles */
+@media (min-width: 600px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for medium screens */
+  }
+}
+
+@media (min-width: 900px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns for large screens */
+  }
+}

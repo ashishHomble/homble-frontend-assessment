@@ -1,0 +1,20 @@
+/* Skeleton.css */
+
+.skeleton {
+  border: 1px solid #ddd;
+  padding: 16px;
+  background-color: #f9f9f9; /* Add background color for visibility */
+  position: relative; /* Ensure Skeleton component is positioned relative to its parent */
+  z-index: 999; /* Set a high z-index to ensure Skeleton is displayed on top */
+}
+
+.skeleton-title {
+  height: 20px;
+  background: #eee;
+  margin-bottom: 8px;
+}
+
+.skeleton-text {
+  height: 15px;
+  background: #eee;
+}

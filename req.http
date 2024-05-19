@@ -1,0 +1,3 @@
+### Get Product Information
+GET https://frontend-assessment-server.onrender.com/api/products
+Accept: application/json

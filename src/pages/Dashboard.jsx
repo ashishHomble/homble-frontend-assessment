@@ -7,6 +7,7 @@ import Skeleton from './Skeleton';
 const Dashboard = () => {
   const [products, setProducts] = useState([]);
   const [sortedField, setSortedField] = useState(null);
+  const [sortDirection, setSortDirection] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
 
   const { data: productList, loading, error } = useFetch('/dashboard');
@@ -17,28 +18,31 @@ const Dashboard = () => {
     }
   }, [productList]);
 
+  useEffect(() => {
+    const rows = document.querySelectorAll('tbody tr');
+    rows.forEach((row, index) => {
+      row.style.animationDelay = `${index * 0.1}s`; // Delay each row animation
+      row.classList.add('wave-animation');
+    });
+  }, [products, searchQuery]);
+
   const handleSort = (field) => {
+    const isAscending = sortedField === field && sortDirection === 'asc';
+    const direction = isAscending ? 'desc' : 'asc';
     const sortedProducts = [...products].sort((a, b) => {
       if (field === 'id') {
-        // Convert IDs to numbers for numerical sorting
         return parseInt(a[field]) - parseInt(b[field]);
       } else {
-        // For other fields, perform regular string comparison
-        if (a[field] < b[field]) return -1;
-        if (a[field] > b[field]) return 1;
+        if (a[field] < b[field]) return isAscending ? 1 : -1;
+        if (a[field] > b[field]) return isAscending ? -1 : 1;
         return 0;
       }
     });
 
-    if (sortedField === field) {
-        sortedProducts.reverse();
-      }
-    
-      setProducts(sortedProducts);
-      setSortedField(field);
-    };
-
-    // Toggle sorting direction if already sorted by the same fiel
+    setProducts(sortedProducts);
+    setSortedField(field);
+    setSortDirection(direction);
+  };
 
   const handleCheck = (id) => {
     const updatedProducts = products.filter((product) => product.id !== id);
@@ -65,21 +69,30 @@ const Dashboard = () => {
       <table>
         <thead>
           <tr>
-            <th onClick={() => handleSort('id')}>
-              ID {sortedField === 'id' ? '▲' : '▼'}
+            <th 
+              onClick={() => handleSort('id')} 
+              className={sortedField === 'id' ? (sortDirection === 'asc' ? 'sort-asc' : 'sort-desc') : ''}
+            >
+              ID
             </th>
-            <th onClick={() => handleSort('selling_price')}>
-              Selling Price {sortedField === 'selling_price' ? '▲' : '▼'}
+            <th 
+              onClick={() => handleSort('selling_price')} 
+              className={sortedField === 'selling_price' ? (sortDirection === 'asc' ? 'sort-asc' : 'sort-desc') : ''}
+            >
+              Selling Price
             </th>
-            <th onClick={() => handleSort('name')}>
-              Name {sortedField === 'name' ? '▲' : '▼'}
+            <th 
+              onClick={() => handleSort('name')} 
+              className={sortedField === 'name' ? (sortDirection === 'asc' ? 'sort-asc' : 'sort-desc') : ''}
+            >
+              Name
             </th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {filteredProducts.map((product) => (
-            <tr key={product.id}>
+          {filteredProducts.map((product, index) => (
+            <tr key={product.id} style={{ animationDelay: `${index * 0.1}s` }} className="wave-animation">
               <td>{product.id}</td>
               <td>{product.selling_price}</td>
               <td>{product.name}</td>

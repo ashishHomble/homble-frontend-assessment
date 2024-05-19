@@ -43,7 +43,7 @@ const ProductList = () => {
     }
   };
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Skeleton />; // Render Skeleton while loading
   if (error) {
     console.error('Error fetching products:', error);
     return <p>Something went wrong. Please check the console for more details.</p>;
@@ -55,6 +55,7 @@ const ProductList = () => {
         {sortedProducts.map((product) => (
           <div key={product.id} className="product-tile">
             <Link to={`/products/${product.id}`}>
+              {product.productImage && <img src={product.productImage} alt={product.name} className="product-photo" />}
               <h2>{product.name}</h2>
               {product.selling_price && <p>Price: ${product.selling_price}</p>}
             </Link>

@@ -2,8 +2,21 @@
 
 .product-list-container {
   padding: 20px;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./Yellow\ Colorful\ Restaurant\ Promotion\ Poster.png'); /* Replace with your image path */
+  background-size: cover;
+  background-position: center;
+  z-index: -1; /* Ensure the background image is behind the content */
 }
 
 .product-grid {
@@ -13,8 +26,8 @@
 }
 
 .product-tile {
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
+  background-color: transparent;
+  border: 1px solid #543310;
   border-radius: 8px;
   padding: 20px;
   text-align: center;
@@ -23,16 +36,29 @@
 
 .product-tile h2 {
   font-size: 1.5em;
+  font-style: italic;
   margin: 0 0 10px;
+  color: #543310;
 }
 
 .product-tile p {
   font-size: 1.2em;
-  color: #333;
+  color: #543310;
+}
+
+.product-tile img.product-photo {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
 }
 
 .product-tile:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-tile a {
+  text-decoration: none; /* Remove underline from links within product tiles */
 }
 
 .add-product-button {
@@ -41,7 +67,7 @@
   padding: 10px 20px;
   font-size: 1em;
   color: white;
-  background-color: #007bff;
+  background-color: #74512D;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -50,7 +76,7 @@
 }
 
 .add-product-button:hover {
-  background-color: #0056b3;
+  background-color: #AF8F6F;
 }
 
 .modal {
@@ -66,7 +92,7 @@
 }
 
 .modal-content {
-  background-color: white;
+  background-color: #F8F4E1;
   padding: 20px;
   border-radius: 8px;
   width: 90%;
@@ -110,7 +136,7 @@
   padding: 10px;
   font-size: 1em;
   color: white;
-  background-color: #007bff;
+  background-color: #543310;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -118,7 +144,7 @@
 }
 
 .modal-content form button:hover {
-  background-color: #0056b3;
+  background-color: #AF8F6F;
 }
 
 .response-message {

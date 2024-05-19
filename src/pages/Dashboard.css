@@ -1,31 +1,94 @@
 /* Dashboard.css */
 .dashboard-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  th {
-    cursor: pointer;
-  }
-  
-  th:hover {
-    background-color: #f2f2f2;
-  }
-  
-  button {
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-  
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px; /* Rounded corners for input */
+  font-size: 16px; /* Larger font size */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #f4f3f1; /* White background for the table */
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px 15px;
+  text-align: left;
+  font-size: 16px;
+}
+
+th {
+  cursor: pointer;
+  background-color: #74512D; /* Green background for headers */
+  color: white; /* White text color for headers */
+  position: relative; /* Positioning for sorting arrows */
+}
+
+th:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+th.sort-asc::after, th.sort-desc::after {
+  content: '';
+  position: absolute;
+  right: 10px;
+  border: 5px solid transparent;
+}
+
+th.sort-asc::after {
+  border-bottom-color: white; /* Up arrow */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+th.sort-desc::after {
+  border-top-color: white; /* Down arrow */
+  bottom: 50%;
+  transform: translateY(50%);
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2; /* Light grey background for even rows */
+}
+
+tbody tr:hover {
+  background-color: #ddd; /* Darker grey on row hover */
+}
+
+button {
+  padding: 8px 12px;
+  background-color: #74512D; /* Tomato background color */
+  color: white; /* White text color */
+  border: none;
+  border-radius: 4px; /* Rounded corners for buttons */
+  cursor: pointer;
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+button:hover {
+  background-color: #AF8F6F; /* Darker tomato on hover */
+}
+
+/* Animation for wave effect */
+@keyframes wave {
+  0% { opacity: 0; transform: translateX(-20px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+.wave-animation {
+  animation: wave 0.5s ease-out forwards;
+}
+
+tbody tr {
+  opacity: 0; /* Start with rows hidden */
+}

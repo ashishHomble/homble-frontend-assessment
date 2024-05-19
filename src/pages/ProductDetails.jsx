@@ -1,5 +1,4 @@
-// src/pages/ProductDetails.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
 import './ProductDetails.css';
@@ -7,6 +6,9 @@ import './ProductDetails.css';
 const ProductDetails = () => {
   const { id } = useParams();
   const { data: product, loading, error } = useFetch(`/products/${id}`);
+  const [descriptionVisible, setDescriptionVisible] = useState(false);
+  const [allergenInfoVisible, setAllergenInfoVisible] = useState(false);
+  const [usageVisible, setUsageVisible] = useState(false);
 
   if (loading) return <p>Loading...</p>;
   if (error) {
@@ -17,18 +19,33 @@ const ProductDetails = () => {
   return (
     <div className="product-details">
       <h1>{product.name}</h1>
-      <p>Price: ${product.price}</p>
+      <p>Price: ${product.selling_price}</p>
+
       <div className="collapsible">
-        <button>Toggle Description</button>
-        <div>{product.description}</div>
+        <button onClick={() => setDescriptionVisible(!descriptionVisible)}>
+          {descriptionVisible ? 'Hide' : 'Show'} Description
+        </button>
+        <div className={`content ${descriptionVisible ? 'show' : ''}`}>
+          {product.description}
+        </div>
       </div>
+
       <div className="collapsible">
-        <button>Toggle Allergen Info</button>
-        <div>{product.allergenInfo}</div>
+        <button onClick={() => setAllergenInfoVisible(!allergenInfoVisible)}>
+          {allergenInfoVisible ? 'Hide' : 'Show'} Allergen Info
+        </button>
+        <div className={`content ${allergenInfoVisible ? 'show' : ''}`}>
+          {product.allergen_info}
+        </div>
       </div>
+
       <div className="collapsible">
-        <button>Toggle Usage</button>
-        <div>{product.usage}</div>
+        <button onClick={() => setUsageVisible(!usageVisible)}>
+          {usageVisible ? 'Hide' : 'Show'} Usage
+        </button>
+        <div className={`content ${usageVisible ? 'show' : ''}`}>
+          {product.cooking_instruction}
+        </div>
       </div>
     </div>
   );

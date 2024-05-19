@@ -1,4 +1,3 @@
-// src/hooks/useFetch.js
 import { useState, useEffect } from 'react';
 import axios from '../axios';
 
@@ -11,7 +10,6 @@ const useFetch = (url) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(url);
-        console.log('API Response:', response.data);  // Log the API response
         setData(response.data);
       } catch (err) {
         setError(err);

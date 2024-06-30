@@ -31,7 +31,7 @@ const ProductDetailPage = () => {
     <div style={{ padding: 20 }}>
       <Typography variant="h4">{product.name}</Typography>
       <Box component={"img"} src={product.productImage}/>
-      <Typography variant="h5">${product.
+      <Typography variant="h5">Rs.{product.
 selling_price
 
       }</Typography>

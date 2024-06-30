@@ -1,13 +1,12 @@
 import React, { useState, useMemo } from 'react';
 import { postRequest } from '../axios';
 import { Link } from 'react-router-dom';
-import { Grid, Card, CardContent, Typography, Button, Modal, TextField } from '@mui/material';
+import { Grid, Card, CardContent, Typography, Button, Modal, TextField, Box } from '@mui/material';
 import Skeleton from '@mui/material/Skeleton';
 import useApiRequest from './useApiRequest';
 
 const ProductListingPage = () => {
-//   const [products, setProducts] = useState([]);
-//   const [loading, setLoading] = useState(true);
+
   const { data: products, loading, error, refetch } = useApiRequest('/products');
   const [open, setOpen] = useState(false);
   const [newProduct, setNewProduct] = useState({
@@ -15,16 +14,6 @@ const ProductListingPage = () => {
 		description: '',
 		allergenInfo: ''
   });
-
-//   useEffect(() => {
-// 	getRequest('/products')
-// 	  .then(response => {
-// 		const sortedProducts = response.data.sort((a, b) => a.sellingPrice - b.sellingPrice);
-// 		setProducts(sortedProducts);
-// 		setLoading(false);
-// 	  })
-// 	  .catch(error => console.error('Error fetching products:', error));
-//   }, []);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -45,11 +34,12 @@ const ProductListingPage = () => {
   };
 
 	const sortedProducts = useMemo(() => {
-		return products ? [...products].sort((a, b) => a.sellingPrice - b.sellingPrice) : [];
+		return products ? [...products].sort((a, b) => a.selling_price - b.selling_price) : [];
 	}, [products]);
 
   return (
 		<div>
+      <Typography variant="h4">Product Listing</Typography>
 			
 			
 			<Grid container spacing={3}>
@@ -69,7 +59,7 @@ const ProductListingPage = () => {
 						<CardContent>
 						<Typography variant="h6">{product.name}</Typography>
 						<Typography>{product.description}</Typography>
-						<Typography>{product.sellingPrice}</Typography>
+						<Typography>Rs.{product.selling_price}</Typography>
 						</CardContent>
 					</Card>
 					</Link>
@@ -82,6 +72,7 @@ const ProductListingPage = () => {
 			</Button>
             <Modal open={open} onClose={handleClose}>
 			<div style={{ padding: 20, backgroundColor: 'white', margin: 'auto', marginTop: '10%', width: '50%' }}>
+				<Box component="img" width="200px" src={newProduct.productImage}/>
 				<TextField
 				label="Product Name"
 				name="name"
@@ -90,14 +81,7 @@ const ProductListingPage = () => {
 				fullWidth
 				margin="normal"
 				/>
-				<TextField
-				label="Product Description"
-				name="description"
-				value={newProduct.description}
-				onChange={handleChange}
-				fullWidth
-				margin="normal"
-				/>
+			
 				<TextField
 				label="Product Allergen Info"
 				name="allergenInfo"
